@@ -1,0 +1,11 @@
+<suite name="AndroidSmokeTest">
+    <test name="Android10">
+
+<!--
+ This will the test script file which has the tests in it
+-->
+        <classes>
+            <class name="testscripts.TestScript1"/>
+        </classes>
+    </test>
+</suite>
