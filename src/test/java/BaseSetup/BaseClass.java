@@ -5,7 +5,6 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
-
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -46,13 +45,12 @@ public class BaseClass {
     }
 
 
-/*
- quitting the driver session after test suite completion
- */
+    /*
+     quitting the driver session after test suite completion
+     */
     @AfterSuite
     public void teardown() {
-        // driver.close();
-         driver.quit();
+        driver.quit();
     }
 
 }
