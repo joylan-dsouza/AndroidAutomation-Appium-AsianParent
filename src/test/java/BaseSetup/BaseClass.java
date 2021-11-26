@@ -13,15 +13,13 @@ public class BaseClass {
     public static AndroidDriver<AndroidElement> driver;
 
 
-
-
     @BeforeSuite
     public void setup() {
         try {
 
             /*
             Setting capabilities for appium to recognize device & launch app
-            PreRequiste : Install Asianparent Android app on device from playstore
+            PreRequisite : Install Asianparent Android app on device from playstore
              */
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "ANDROID");
@@ -50,7 +48,7 @@ public class BaseClass {
      */
     @AfterSuite
     public void teardown() {
-        driver.quit();
+        driver.quit(); // quit driver
     }
 
 }
