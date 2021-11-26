@@ -6,6 +6,8 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -14,10 +16,12 @@ public class CommunityPage extends BaseClass
 {
     public AndroidDriver<AndroidElement> driver;
 
+
+
     public CommunityPage(AndroidDriver<AndroidElement>driver)
     {
-     this.driver = driver ;
-     PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+        this.driver = driver ;
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 
     }
 
@@ -68,24 +72,29 @@ public class CommunityPage extends BaseClass
         Below method will tap notification icon on community page
          */
     public void tapNotification() throws InterruptedException {
-        Thread.sleep(2000);
+         WebDriverWait wait = new WebDriverWait(driver, 10);
+        //Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOf(exploreText));
         exploreText.click();
-        Thread.sleep(2000);
+       // Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOf(notificationIcon));
         notificationIcon.click();
+        System.out.println("User tap notification button");
 
     }
     /*
        Below method will tap back  icon on notification page
         */
-     public void tapBack() throws InterruptedException {
-         Thread.sleep(2000);
+    public void tapBack() throws InterruptedException {
+        Thread.sleep(2000);
         outerloop: for(AndroidElement bckbtn : imagebuttonlist)
         {
-            System.out.println(bckbtn.getAttribute("content-desc"));
+           // System.out.println(bckbtn.getAttribute("content-desc"));
 
             if(bckbtn.getAttribute("content-desc").contains("Navigate up"))
             {
                 bckbtn.click();
+                System.out.println("User tap back button");
                 break outerloop;
             }
 
@@ -95,29 +104,35 @@ public class CommunityPage extends BaseClass
     /*
            Below method will tap add icon on community page
             */
-        public void tapAddPost() throws InterruptedException {
-            Thread.sleep(2000);
-            addPost.click();
-        }
+    public void tapAddPost() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(addPost));
+        addPost.click();
+        System.out.println("User tap add post button");
+    }
     /*
                Below method will post question option
                 */
-        public void tapPostQuestion() throws InterruptedException {
-            Thread.sleep(2000);
+    public void tapPostQuestion() throws InterruptedException {
+      // Thread.sleep(2000);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(postQuestion));
+        postQuestion.click();
+        System.out.println("User tap post question button");
 
-            postQuestion.click();
-
-        }
+    }
 
         /*
            Below method will  add title , message
             */
 
     public void enterPost() throws InterruptedException {
-        Thread.sleep(2000);
-
+       // Thread.sleep(2000);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(titleField));
         titleField.sendKeys("This is a title");
         postField.sendKeys("This is a message in the post");
+        System.out.println("User entered title and post message  ");
 
 
     }
@@ -126,8 +141,11 @@ public class CommunityPage extends BaseClass
             */
 
     public void tapNext() throws InterruptedException {
-        Thread.sleep(2000);
+      //  Thread.sleep(2000);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(nextBtn));
         nextBtn.click();
+        System.out.println("User tap next button");
     }
     /*
                Below method will select Random topic radio button
@@ -136,41 +154,57 @@ public class CommunityPage extends BaseClass
         Thread.sleep(10000);
         outerloop: for(AndroidElement radioBtn : optionList)
         {
-            System.out.println(radioBtn.getText());
+           // System.out.println(radioBtn.getText());
 
             if(radioBtn.getText().contains("Random Talk"))
             {
                 radioBtn.click();
+                System.out.println("User tap random radio button");
                 break outerloop;
             }
 
         }
 
         Thread.sleep(2000);
+
         doneBtn.click();
+        System.out.println("User tap done button");
 
     }
     /*
            Below method will delete the post by tapping  more option and click delete button
             */
 
-    public void deletePost() throws InterruptedException {
-        Thread.sleep(10000);
-        moreBtn.click();
-        Thread.sleep(10000);
-        outerloop: for(AndroidElement deletebtn : moreOptions)
-        {
-            System.out.println(deletebtn.getText());
+    public boolean deletePost()
+    {
+        try {
+            Thread.sleep(10000);
+            moreBtn.click();
+            System.out.println("User tap more button");
+            Thread.sleep(10000);
+            outerloop:
+            for (AndroidElement deletebtn : moreOptions) {
 
-            if(deletebtn.getText().contains("Delete"))
-            {
-                deletebtn.click();
-                break outerloop;
+
+                if (deletebtn.getText().contains("Delete")) {
+                    deletebtn.click();
+                    System.out.println("User tap delete button");
+                    break outerloop;
+                }
+
             }
+            Thread.sleep(2000);
+            yesBtn.click();
+            System.out.println("User tap yes button");
 
+            return true ;
         }
-        Thread.sleep(2000);
-        yesBtn.click();
+        catch(Exception e)
+        {
+            System.out.println(e);
+
+            return false ;
+        }
 
 
     }
