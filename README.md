@@ -1,4 +1,4 @@
-# AndroidAutomation-Appium-AsianParent
+# AndroidAutomation-Appium-PageObjectModel
 Android app automation project using Page Object Model framework using Appium with java , maven & Test NG
 
 Download Android app ( Asianparent from playstore) on your android phone and signup with email & password.
