@@ -9,45 +9,36 @@ import BaseSetup.BaseClass;
 public class TestScript1 extends BaseClass {
 
     /*
-     This test will verify login and opening of notification screen
-
+     This test will verify user is able to login into app
      */
-@Test
+    @Test
     public void test1() throws InterruptedException {
 
-    LoginPage lp = new LoginPage(driver);
-    CommunityPage Cp = new CommunityPage(driver);
-    lp.loginapp();
-    Cp.tapNotification();
-    Cp.tapBack();
-    //Cp.tapAddPost();
-  //  Cp.tapPostQuestion();
-   // Cp.enterPost();
-  //  Cp.tapNext();
-  //  Cp.selectTopic();
-  //  Cp.deletePost();
-
-//  Assert.assertTrue(lp.loginapp(),"User logged In");
-
-    Thread.sleep(3000);
-}
+        LoginPage lp = new LoginPage(driver);
+        CommunityPage Cp = new CommunityPage(driver);
+        boolean bool = lp.loginapp();
+        Assert.assertTrue(bool,"User logged In");
+        Thread.sleep(3000);
+    }
 
 /*
  This test will verify adding and deleting post
-
  */
 
-@Test
+    @Test
     public void test2() throws InterruptedException {
-    LoginPage lp = new LoginPage(driver);
-    CommunityPage Cp = new CommunityPage(driver);
-    Cp.tapAddPost();
-    Cp.tapPostQuestion();
-    Cp.enterPost();
-    Cp.tapNext();
-    Cp.selectTopic();
-    Cp.deletePost();
-}
+        LoginPage lp = new LoginPage(driver);
+        CommunityPage Cp = new CommunityPage(driver);
+        Cp.tapNotification();
+        Cp.tapBack();
+        Cp.tapAddPost();
+        Cp.tapPostQuestion();
+        Cp.enterPost();
+        Cp.tapNext();
+        Cp.selectTopic();
+        boolean bool = Cp.deletePost();
+        Assert.assertTrue(bool,"Post Deleted");
+    }
 
 
 }
