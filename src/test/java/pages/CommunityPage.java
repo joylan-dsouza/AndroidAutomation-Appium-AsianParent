@@ -83,14 +83,12 @@ public class CommunityPage extends BaseClass
 
     }
     /*
-       Below method will tap back  icon on notification page
-        */
+    Below method will tap back  icon on notification page
+     */
     public void tapBack() throws InterruptedException {
         Thread.sleep(2000);
         outerloop: for(AndroidElement bckbtn : imagebuttonlist)
         {
-           // System.out.println(bckbtn.getAttribute("content-desc"));
-
             if(bckbtn.getAttribute("content-desc").contains("Navigate up"))
             {
                 bckbtn.click();
@@ -102,8 +100,8 @@ public class CommunityPage extends BaseClass
 
     }
     /*
-           Below method will tap add icon on community page
-            */
+    Below method will tap add icon on community page
+    */
     public void tapAddPost() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(addPost));
@@ -114,7 +112,6 @@ public class CommunityPage extends BaseClass
                Below method will post question option
                 */
     public void tapPostQuestion() throws InterruptedException {
-      // Thread.sleep(2000);
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(postQuestion));
         postQuestion.click();
@@ -127,7 +124,6 @@ public class CommunityPage extends BaseClass
             */
 
     public void enterPost() throws InterruptedException {
-       // Thread.sleep(2000);
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(titleField));
         titleField.sendKeys("This is a title");
@@ -137,8 +133,8 @@ public class CommunityPage extends BaseClass
 
     }
     /*
-           Below method will tap Next Button
-            */
+    Below method will tap Next Button
+    */
 
     public void tapNext() throws InterruptedException {
       //  Thread.sleep(2000);
@@ -148,13 +144,13 @@ public class CommunityPage extends BaseClass
         System.out.println("User tap next button");
     }
     /*
-               Below method will select Random topic radio button
-                */
+    Below method will select Random topic radio button
+     */
     public void selectTopic() throws InterruptedException {
         Thread.sleep(10000);
         outerloop: for(AndroidElement radioBtn : optionList)
         {
-           // System.out.println(radioBtn.getText());
+
 
             if(radioBtn.getText().contains("Random Talk"))
             {
@@ -164,16 +160,14 @@ public class CommunityPage extends BaseClass
             }
 
         }
-
         Thread.sleep(2000);
-
         doneBtn.click();
         System.out.println("User tap done button");
 
     }
     /*
-           Below method will delete the post by tapping  more option and click delete button
-            */
+    Below method will delete the post by tapping  more option and click delete button
+    */
 
     public boolean deletePost()
     {
