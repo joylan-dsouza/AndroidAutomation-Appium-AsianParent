@@ -49,11 +49,11 @@ public class LoginPage extends BaseClass
             WebDriverWait wait = new WebDriverWait(driver, 10);
             wait.until(ExpectedConditions.visibilityOf(emailField));
             emailField.click();
-            emailField.sendKeys("joylan888@gmail.com"); // enter your email id
+            emailField.sendKeys("Add your email"); // enter your email id
             wait.until(ExpectedConditions.visibilityOf(passwordField));
             System.out.println("User entered username & password");
            // Thread.sleep(5000);
-            passwordField.sendKeys("Test@1234");  // enter your password
+            passwordField.sendKeys("add your password");  // enter your password
             LoginBtn.click();
             System.out.println("User tap login button");
 
